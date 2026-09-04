@@ -40,8 +40,8 @@ jobs:
           context: .
           push: ${{ github.event_name == 'push' }}
           tags: |
-            ghcr.io/hammer-redhat/cat-gif-generator:latest
-            ghcr.io/hammer-redhat/cat-gif-generator:${{ steps.sha.outputs.short }}
+            ghcr.io/shadowman-lab/cat-gif-generator:latest
+            ghcr.io/shadowman-lab/cat-gif-generator:${{ steps.sha.outputs.short }}
           build-args: |
             NEXUS_USER=${{ secrets.NEXUS_USER }}
             NEXUS_PASS=${{ secrets.NEXUS_PASS }}
@@ -51,7 +51,7 @@ jobs:
       - name: Generate SBOM
         uses: anchore/sbom-action@v0
         with:
-          image: ghcr.io/hammer-redhat/cat-gif-generator:${{ steps.sha.outputs.short }}
+          image: ghcr.io/shadowman-lab/cat-gif-generator:${{ steps.sha.outputs.short }}
           format: cyclonedx-json
           output-file: sbom.cyclonedx.json
 
